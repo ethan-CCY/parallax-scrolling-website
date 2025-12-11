@@ -198,11 +198,6 @@ img {
   background: radial-gradient(circle, rgba(255,227,160,0.95) 0%, rgba(255,199,92,0.8) 45%, rgba(255,140,54,0) 70%);
   filter: blur(2px);
   animation: sunPath 28s linear infinite;
-  offset-path: path("M -20vw 100vh Q 50vw -20vh 120vw 100vh");   /*重點：使用 vw/vh 畫出真正全螢幕太陽軌跡 */
-  offset-rotate: 0deg;
-  
-  /* ✅ 必加這行，不然動畫不會動 */
-  offset-distance: 0%;
 }
 
 @keyframes skyShift {
@@ -233,13 +228,12 @@ img {
 }
 
 @keyframes sunPath {
-  0%   { offset-distance: 0%;   opacity: 0; }
-  15%  { opacity: 0.6; }
-  50%  { opacity: 1; }
-  85%  { opacity: 0.2; }
-  100% { offset-distance: 100%; opacity: 0; }
+  0%   { transform: translate(-20vw, 50vh) scale(0.5); opacity: 0; }
+  20%  { transform: translate(10vw, 20vh) scale(0.9); opacity: 0.7; }
+  50%  { transform: translate(50vw, -10vh) scale(1); opacity: 1; }
+  80%  { transform: translate(90vw, 20vh) scale(0.8); opacity: 0.5; }
+  100% { transform: translate(120vw, 50vh) scale(0.5); opacity: 0; }
 }
-
 
 .home__title, .home__subtitle {
   position: absolute;
