@@ -184,7 +184,7 @@ img {
 }
 
 .home__sky-gradient {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: linear-gradient(180deg, rgba(13, 20, 41, 0.9), rgba(4, 7, 18, 0.95));
   animation: skyShift 28s ease-in-out infinite;
@@ -192,7 +192,7 @@ img {
 }
 
 .home__sun {
-  position: absolute;
+  position: fixed;
   width: 18rem;
   aspect-ratio: 1 / 1;
   background: radial-gradient(circle, rgba(255, 227, 160, 0.95) 0%, rgba(255, 199, 92, 0.8) 45%, rgba(255, 140, 54, 0) 70%);
