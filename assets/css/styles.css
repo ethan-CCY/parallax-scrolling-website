@@ -194,11 +194,12 @@ img {
 .home__sun {
   position: fixed;
   width: 18rem;
-  aspect-ratio: 1 / 1;
-  background: radial-gradient(circle, rgba(255, 227, 160, 0.95) 0%, rgba(255, 199, 92, 0.8) 45%, rgba(255, 140, 54, 0) 70%);
+  aspect-ratio: 1/1;
+  background: radial-gradient(circle, rgba(255,227,160,0.95) 0%, rgba(255,199,92,0.8) 45%, rgba(255,140,54,0) 70%);
   filter: blur(2px);
   animation: sunPath 28s linear infinite;
-  transform-origin: center;
+  offset-path: path("M -20 600 Q 50 -100 120 600"); /* 重點：完美拋物線 */
+  offset-rotate: 0deg;
 }
 
 @keyframes skyShift {
@@ -229,35 +230,13 @@ img {
 }
 
 @keyframes sunPath {
-  0% {
-    transform: translate(-80%, 60%) scale(0.55);
-    opacity: 0;
-  }
-  10% {
-    transform: translate(-55%, 45%) scale(0.65);
-    opacity: 0.35;
-  }
-  30% {
-    transform: translate(5%, 20%) scale(0.9);
-    opacity: 0.9;
-  }
-  50% {
-    transform: translate(50%, -10%) scale(1);
-    opacity: 1;
-  }
-  70% {
-    transform: translate(105%, 20%) scale(0.9);
-    opacity: 0.75;
-  }
-  90% {
-    transform: translate(150%, 45%) scale(0.65);
-    opacity: 0.25;
-  }
-  100% {
-    transform: translate(180%, 60%) scale(0.5);
-    opacity: 0;
-  }
+  0%   { offset-distance: 0%;   opacity: 0; }
+  15%  { opacity: 0.6; }
+  50%  { opacity: 1; }
+  85%  { opacity: 0.2; }
+  100% { offset-distance: 100%; opacity: 0; }
 }
+
 
 .home__title, .home__subtitle {
   position: absolute;
