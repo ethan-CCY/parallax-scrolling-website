@@ -179,7 +179,7 @@ img {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: var(--z-tooltip);
+  z-index: 200; /* 固定放在圖片之上，確保永遠看得到 */
   mix-blend-mode: screen;
 }
 
