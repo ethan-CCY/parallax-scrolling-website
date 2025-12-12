@@ -227,29 +227,64 @@ img {
 }
 
 @keyframes skyShift {
-  0% {
-    background: radial-gradient(circle at 50% 120%, rgba(30, 42, 80, 0.85) 0%, rgba(10, 18, 32, 0.95) 35%),
-      linear-gradient(180deg, rgba(230, 164, 108, 0.35), rgba(10, 15, 31, 0.8));
+  0% {    /* 0% 夜晚偏冷，地平線有一點點微光 */
+    background:
+      radial-gradient(circle at 50% 120%,
+        rgba(30, 42, 80, 0.85) 0%,
+        rgba(10, 18, 32, 0.95) 35%),
+      linear-gradient(180deg,
+        rgba(230, 164, 108, 0.35),
+        rgba(10, 15, 31, 0.8));
   }
-  10% {
-    background: radial-gradient(circle at 40% 115%, rgba(236, 192, 136, 0.65) 0%, rgba(72, 63, 92, 0.68) 38%),
-      linear-gradient(180deg, rgba(249, 197, 149, 0.45), rgba(16, 19, 37, 0.75));
+ 
+  15% {     /* 15% 破曉／日出：暖橘光開始爬上來，但整體還沒非常亮    約第 9 秒（60s * 0.15） */
+    background:
+      radial-gradient(circle at 40% 115%,
+        rgba(236, 192, 136, 0.65) 0%,
+        rgba(72, 63, 92, 0.68) 38%),
+      linear-gradient(180deg,
+        rgba(249, 197, 149, 0.45),
+        rgba(16, 19, 37, 0.75));
   }
-  35% {
-    background: radial-gradient(circle at 50% 110%, rgba(168, 205, 255, 0.4) 0%, rgba(88, 132, 184, 0.48) 36%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(84, 123, 168, 0.32));
+  
+  40% {    /* 40% 早上接近中午：白藍光為主，亮度已經很高    約第 24 秒，太陽快到頂點 */
+    background:
+      radial-gradient(circle at 50% 110%,
+        rgba(168, 205, 255, 0.4) 0%,
+        rgba(88, 132, 184, 0.48) 36%),
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0.10),
+        rgba(84, 123, 168, 0.32));
   }
-  60% {
-    background: radial-gradient(circle at 60% 110%, rgba(184, 214, 255, 0.3) 0%, rgba(76, 111, 156, 0.46) 36%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(64, 98, 146, 0.26));
+
+  55% {     /* 55% 正午最亮：白藍色為主，對應太陽在高空停留那段時間    約第 33 秒（剛好涵蓋你 25–30 秒那段 apex 附近） */
+    background:
+      radial-gradient(circle at 50% 108%,
+        rgba(190, 220, 255, 0.55) 0%,
+        rgba(100, 145, 200, 0.5) 40%),
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0.18),
+        rgba(90, 135, 185, 0.30));
   }
-  80% {
-    background: radial-gradient(circle at 70% 120%, rgba(255, 180, 120, 0.52) 0%, rgba(92, 52, 70, 0.75) 36%),
-      linear-gradient(180deg, rgba(255, 186, 122, 0.26), rgba(26, 18, 40, 0.78));
+
+  75% {    /* 75% 下午偏黃：亮度開始下降，色溫變暖（黃橘），但還沒完全日落  約第 45 秒 */
+    background:
+      radial-gradient(circle at 70% 120%,
+        rgba(255, 180, 120, 0.52) 0%,
+        rgba(92, 52, 70, 0.75) 36%),
+      linear-gradient(180deg,
+        rgba(255, 186, 122, 0.26),
+        rgba(26, 18, 40, 0.78));
   }
-  100% {
-    background: radial-gradient(circle at 70% 130%, rgba(18, 22, 45, 0.88) 0%, rgba(6, 10, 22, 0.95) 38%),
-      linear-gradient(180deg, rgba(12, 18, 36, 0.68), rgba(4, 7, 15, 0.88));
+
+  100% {    /* 100% 夜晚：再次回到深藍／黑色天空，準備下一輪循環 */
+    background:
+      radial-gradient(circle at 70% 130%,
+        rgba(18, 22, 45, 0.88) 0%,
+        rgba(6, 10, 22, 0.95) 38%),
+      linear-gradient(180deg,
+        rgba(12, 18, 36, 0.68),
+        rgba(4, 7, 15, 0.88));
   }
 }
 
