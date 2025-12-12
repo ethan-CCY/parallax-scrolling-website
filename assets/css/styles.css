@@ -199,7 +199,7 @@ img {
   aspect-ratio: 1/1;
   background: radial-gradient(circle, rgba(255,227,160,0.95) 0%, rgba(255,199,92,0.8) 45%, rgba(255,140,54,0) 70%);
   filter: blur(2px);
-  z-index: 1;   /* 確保圖層順序，設為 1 可位於背景之上，但可能需視山脈圖層調整 */
+  z-index: 200;   /* 確保圖層順序，設為 1 可位於背景之上，但可能需視山脈圖層調整 */
   
   /* 應用動畫：注意這裡移除了 linear，改在 keyframes 裡設定 */
   animation: sunPath 60s infinite; 
