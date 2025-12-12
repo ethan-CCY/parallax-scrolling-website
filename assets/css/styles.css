@@ -194,10 +194,57 @@ img {
 .home__sun {
   position: fixed;
   width: 18rem;
-  aspect-ratio: 1/1;
-  background: radial-gradient(circle, rgba(255,227,160,0.95) 0%, rgba(255,199,92,0.8) 45%, rgba(255,140,54,0) 70%);
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle,
+    rgba(255, 227, 160, 0.95) 0%,
+    rgba(255, 199, 92, 0.8) 45%,
+    rgba(255, 140, 54, 0) 70%);
   filter: blur(2px);
-  animation: sunPath 28s linear infinite;
+
+  /* 拋物線路徑：從左外 → 畫面上方中間 → 右外 */
+  /* 起點：(-15vw, 70vh)   終點：(115vw, 70vh)
+     最高點控制： (50vw, 10vh) → 會在 Ethan 標題上方掠過 */
+  offset-path: path("M -15vw 70vh Q 50vw 10vh 115vw 70vh");
+  offset-rotate: 0deg;
+
+  /* 讓太陽跑完整條路徑 */
+  animation: sunPath 40s linear infinite;
+}
+
+/* =========  太陽路徑動畫  ========= */
+@keyframes sunPath {
+  /* 剛出現在左下，偏暗小顆 */
+  0% {
+    offset-distance: 0%;
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  /* 慢慢升起，開始變亮 */
+  20% {
+    offset-distance: 20%;
+    opacity: 0.8;
+  }
+
+  /* 正上方附近，最大最亮（在 Ethan 上方掠過） */
+  50% {
+    offset-distance: 50%;
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  /* 往右下落下，漸暗變小 */
+  80% {
+    offset-distance: 80%;
+    opacity: 0.6;
+  }
+
+  /* 落到右邊畫面外，消失 */
+  100% {
+    offset-distance: 100%;
+    transform: scale(0.5);
+    opacity: 0;
+  }
 }
 
 @keyframes skyShift {
@@ -225,14 +272,6 @@ img {
     background: radial-gradient(circle at 70% 130%, rgba(18, 22, 45, 0.88) 0%, rgba(6, 10, 22, 0.95) 38%),
       linear-gradient(180deg, rgba(12, 18, 36, 0.68), rgba(4, 7, 15, 0.88));
   }
-}
-
-@keyframes sunPath {
-  0%   { transform: translate(-20vw, 50vh) scale(0.5); opacity: 0; }
-  20%  { transform: translate(10vw, 20vh) scale(0.9); opacity: 0.7; }
-  50%  { transform: translate(50vw, -10vh) scale(1); opacity: 1; }
-  80%  { transform: translate(90vw, 20vh) scale(0.8); opacity: 0.5; }
-  100% { transform: translate(120vw, 50vh) scale(0.5); opacity: 0; }
 }
 
 .home__title, .home__subtitle {
