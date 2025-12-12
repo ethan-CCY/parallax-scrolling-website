@@ -193,11 +193,37 @@ img {
 
 .home__sun {
   position: fixed;
+  top: 0;       /* 強制設定基準點，確保 translate 路徑正確 */
+  left: 0;      /* 強制設定基準點 */
   width: 18rem;
   aspect-ratio: 1/1;
   background: radial-gradient(circle, rgba(255,227,160,0.95) 0%, rgba(255,199,92,0.8) 45%, rgba(255,140,54,0) 70%);
   filter: blur(2px);
-  animation: sunPath 28s linear infinite;
+  z-index: 1;   /* 確保圖層順序，設為 1 可位於背景之上，但可能需視山脈圖層調整 */
+  
+  /* 應用動畫：注意這裡移除了 linear，改在 keyframes 裡設定 */
+  animation: sunPath 28s infinite; 
+}
+
+@keyframes sunPath {
+  0% {
+    /* 從左方外面 (-20vw) 且較低的位置 (50vh) 開始 */
+    transform: translate(-20vw, 50vh) scale(0.5);
+    opacity: 0;
+    animation-timing-function: ease-out; /* 上升時減速 (拋物線前半段) */
+  }
+  50% {
+    /* 到達中間 (50vw) 與頂部上方 (-15vh) */
+    /* 原本是 -10vh，改成 -15vh 讓它飛得更高，確保避開位於 top: 32% 的標題 */
+    transform: translate(50vw, -15vh) scale(1);
+    opacity: 1;
+    animation-timing-function: ease-in;  /* 下降時加速 (拋物線後半段) */
+  }
+  100% {
+    /* 落到右方外面 (120vw) */
+    transform: translate(120vw, 50vh) scale(0.5);
+    opacity: 0;
+  }
 }
 
 @keyframes skyShift {
@@ -225,14 +251,6 @@ img {
     background: radial-gradient(circle at 70% 130%, rgba(18, 22, 45, 0.88) 0%, rgba(6, 10, 22, 0.95) 38%),
       linear-gradient(180deg, rgba(12, 18, 36, 0.68), rgba(4, 7, 15, 0.88));
   }
-}
-
-@keyframes sunPath {
-  0%   { transform: translate(-20vw, 50vh) scale(0.5); opacity: 0; }
-  20%  { transform: translate(10vw, 20vh) scale(0.9); opacity: 0.7; }
-  50%  { transform: translate(50vw, -10vh) scale(1); opacity: 1; }
-  80%  { transform: translate(90vw, 20vh) scale(0.8); opacity: 0.5; }
-  100% { transform: translate(120vw, 50vh) scale(0.5); opacity: 0; }
 }
 
 .home__title, .home__subtitle {
