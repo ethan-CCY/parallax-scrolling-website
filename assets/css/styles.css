@@ -187,7 +187,7 @@ img {
   position: fixed;
   inset: 0;
   background: linear-gradient(180deg, rgba(13, 20, 41, 0.9), rgba(4, 7, 18, 0.95));
-  animation: skyShift 28s ease-in-out infinite;
+  animation: skyShift 40s ease-in-out infinite;
   mix-blend-mode: soft-light;
 }
 
