@@ -187,7 +187,7 @@ img {
   position: fixed;
   inset: 0;
   background: linear-gradient(180deg, rgba(13, 20, 41, 0.9), rgba(4, 7, 18, 0.95));
-  animation: skyShift 28s ease-in-out infinite;
+  animation: skyShift 60s ease-in-out infinite;
   mix-blend-mode: soft-light;
 }
 
@@ -202,7 +202,7 @@ img {
   z-index: 1;   /* 確保圖層順序，設為 1 可位於背景之上，但可能需視山脈圖層調整 */
   
   /* 應用動畫：注意這裡移除了 linear，改在 keyframes 裡設定 */
-  animation: sunPath 28s infinite; 
+  animation: sunPath 60s infinite; 
 }
 
 @keyframes sunPath {
